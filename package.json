@@ -1,0 +1,30 @@
+{
+  "name": "meantutorial",
+  "version": "1.0.0",
+  "description": "a tutorial on the mean stack my traversy media",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peacecake/Mean-Tutorial.git"
+  },
+  "author": "Sebastian Peiser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peacecake/Mean-Tutorial/issues"
+  },
+  "homepage": "https://github.com/Peacecake/Mean-Tutorial#readme"
+}

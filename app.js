@@ -7,13 +7,21 @@ const mongoose = require("mongoose");
 const config = require("./config/database");
 
 // Connect to mongodb database
-mongoose.connect(config.database);
-mongoose.connection.on("connected", () => {
-  console.log("connected to database " + config.database);
-});
-mongoose.connection.on("error", (err) => {
+mongoose.Promise = global.Promise;
+mongoose.connect(config.database, {
+  useMongoClient: true
+}).then((db) => {
+  console.log("connected to " + db.name);
+}).catch((err) => {
   console.log("database error " + err);
 });
+
+// mongoose.connection.on("connected", () => {
+//   console.log("connected to database " + config.database);
+// });
+// mongoose.connection.on("error", (err) => {
+//   console.log("database error " + err);
+// });
 
 const app = express();
 

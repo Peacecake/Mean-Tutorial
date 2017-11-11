@@ -1,5 +1,5 @@
-const express = require ("express");
-const path  =require("path");
+const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
@@ -16,13 +16,6 @@ mongoose.connect(config.database, {
   console.log("database error " + err);
 });
 
-// mongoose.connection.on("connected", () => {
-//   console.log("connected to database " + config.database);
-// });
-// mongoose.connection.on("error", (err) => {
-//   console.log("database error " + err);
-// });
-
 const app = express();
 
 const users = require("./routes/users");
@@ -37,6 +30,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Body Parser Middleware
 app.use(bodyParser.json());
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require("./config/passport")(passport);
 
 app.use("/users", users);
 

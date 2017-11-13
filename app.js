@@ -37,6 +37,7 @@ app.use(passport.session());
 
 require("./config/passport")(passport);
 
+// Routing
 app.use("/users", users);
 
 // index route

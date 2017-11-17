@@ -5,7 +5,7 @@ export class ValidateService {
 
   constructor() { }
 
-  validateRegister(user) {
+  validateRegister(user) : boolean {
     if(user.name == undefined || user.username == undefined || user.email == undefined || user.password == undefined) {
       return false;
     } else {
@@ -13,7 +13,7 @@ export class ValidateService {
     }
   }
 
-  validateEmail(email) {
+  validateEmail(email) : boolean {
     const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return re.test(email);    
   }

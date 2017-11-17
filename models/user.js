@@ -15,7 +15,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  passwort: {
+  password: {
     type: String,
     required: true
   }
@@ -35,9 +35,9 @@ module.exports.getUserByUsername = function(username, callback) {
 module.exports.addUser = function(newUser) {
   return new Promise((resolve, reject) => {
     bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newUser.passwort, salt, (err, hash) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
         if(err) reject(err);
-        newUser.passwort = hash;
+        newUser.password = hash;
         newUser.save().then((doc) => {
           resolve(doc);
         });

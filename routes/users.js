@@ -13,7 +13,7 @@ router.post("/register", (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     username: req.body.username,
-    passwort: req.body.passwort
+    password: req.body.password
   });
 
   User.addUser(newUser)
@@ -36,7 +36,7 @@ router.post("/authenticate", (req, res, next) => {
       return res.json({success: false, msg: "User not found"});
     }
 
-    User.comparePassword(password, user.passwort, (err, isMatch) => {
+    User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
       if(isMatch) {
         const token = jwt.sign(user.toJSON(), config.secret, {
